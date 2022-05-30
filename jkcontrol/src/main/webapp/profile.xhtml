@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<p:card style="width: 50em; margin: 1em auto">
+
+			<p>Visitantes</p>
+			<p:dataTable var="visitante" value="#{visitanteBean.listAll()}" editable="true">
+
+				<p:column >
+					<img src="#{request.contextPath}#{visitante.imagePath}" style="width: 100px;"/>
+				</p:column>
+
+				<p:column style="width: 70%;">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{visitante.name}" style="font-size: 20px" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{visitante.name}" style="font-size: 20px" />
+						</f:facet>
+					</p:cellEditor>
+					<h:outputText value="#{visitante.email}" />
+					<br/>
+					<h:outputText value="#{visitante.birthday}" />
+					
+
+
+				</p:column>
+				
+
+			</p:dataTable>
+
+		</p:card>
+	</ui:define>
+</ui:composition>
+
+
+</html>
